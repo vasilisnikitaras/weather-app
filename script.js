@@ -1,4 +1,4 @@
-// Weather Forecast App - Enhanced JS with Popular Cities
+// Weather Forecast App - Improved functionality
 const apiKey = "YOUR_API_KEY"; // Replace with your actual OpenWeather API key
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
 
@@ -39,7 +39,7 @@ function displayWeather(data) {
     `;
 }
 
-// Function to populate a dropdown with popular cities
+// Function to populate city dropdown
 function populateCityDropdown() {
     let dropdown = document.getElementById("city-dropdown");
     popularCities.forEach(city => {
@@ -47,6 +47,10 @@ function populateCityDropdown() {
         option.value = city;
         option.textContent = city;
         dropdown.appendChild(option);
+    });
+
+    dropdown.addEventListener("change", function() {
+        document.getElementById("city-input").value = dropdown.value;
     });
 }
 
