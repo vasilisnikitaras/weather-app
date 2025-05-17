@@ -1,26 +1,76 @@
+/* Overall page styling */
+body {
+    background-color: #e0f7fa; /* Light blue background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Center everything in a container */
+.container {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 /* Style for dropdown */
 #city-dropdown {
-    width: 100%;
-    padding: 8px;
+    width: 80%;
+    padding: 12px;
     font-size: 16px;
-    border: 2px solid #007bff;
-    border-radius: 5px;
+    border: 2px solid #0288d1;
+    border-radius: 8px;
     background-color: #fff;
     cursor: pointer;
 }
 
-/* Style for search button */
-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+/* Style for search input */
+#city-input {
+    width: 80%;
+    padding: 12px;
     font-size: 16px;
+    border: 2px solid #0288d1;
+    border-radius: 8px;
     margin-top: 10px;
 }
 
+/* Style for search button */
+button {
+    background-color: #0288d1; /* Light blue button */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
 button:hover {
-    background-color: #0056b3;
+    background-color: #0277bd; /* Slightly darker blue on hover */
+}
+
+/* Title and footer styling */
+h1 {
+    color: #01579b; /* Darker blue for the title */
+    font-size: 24px;
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #555;
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
 }
