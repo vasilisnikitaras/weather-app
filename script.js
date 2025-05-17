@@ -1,13 +1,16 @@
-// Weather Forecast App - Clean and Optimized JS
+// Weather Forecast App - Enhanced JS with Popular Cities
 const apiKey = "YOUR_API_KEY"; // Replace with your actual OpenWeather API key
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
+
+// List of popular cities
+const popularCities = ["New York", "Los Angeles", "Toronto", "London", "Paris", "Tokyo", "Berlin", "Sydney", "Montreal", "Dubai"];
 
 // Function to fetch weather data
 async function fetchWeather() {
     let city = document.getElementById("city-input").value.trim();
 
     if (city === "") {
-        alert("Please enter a city name.");
+        document.getElementById("weather-output").innerHTML = "<p>Please enter a city name.</p>";
         return;
     }
 
@@ -18,15 +21,15 @@ async function fetchWeather() {
         if (data.cod === 200) {
             displayWeather(data);
         } else {
-            alert("City not found! Try again.");
+            document.getElementById("weather-output").innerHTML = `<p>City not found! Try again.</p>`;
         }
     } catch (error) {
         console.error("Error fetching weather data:", error);
-        alert("Failed to retrieve weather data. Please check your internet connection.");
+        document.getElementById("weather-output").innerHTML = `<p>Failed to retrieve data. Please check your internet connection.</p>`;
     }
 }
 
-// Function to display fetched weather data
+// Function to display weather data
 function displayWeather(data) {
     document.getElementById("weather-output").innerHTML = `
         <h2>Weather in ${data.name}, ${data.sys.country}</h2>
@@ -36,5 +39,17 @@ function displayWeather(data) {
     `;
 }
 
-// Event Listener for Search Button
+// Function to populate a dropdown with popular cities
+function populateCityDropdown() {
+    let dropdown = document.getElementById("city-dropdown");
+    popularCities.forEach(city => {
+        let option = document.createElement("option");
+        option.value = city;
+        option.textContent = city;
+        dropdown.appendChild(option);
+    });
+}
+
+// Event Listeners
 document.getElementById("search-btn").addEventListener("click", fetchWeather);
+document.addEventListener("DOMContentLoaded", populateCityDropdown);

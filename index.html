@@ -8,18 +8,22 @@
 </head>
 <body>
 
-<button onclick="window.location.href='https://vasilisnikitaras.github.io/vasilis-portfolio/'">
-    Back to Home
-</button>
-
+    <button onclick="window.location.href='https://vasilisnikitaras.github.io/vasilis-portfolio/'">
+        Back to Home
+    </button>
 
     <header>
         <h1>Weather Forecast App</h1>
     </header>
 
-
     <section id="weather">
-        <input type="text" id="city-input" placeholder="Enter city name">
+        <h3>Select a City or Enter Manually:</h3>
+        
+        <select id="city-dropdown">
+            <option value="" disabled selected>Select a city</option>
+        </select>
+
+        <input type="text" id="city-input" placeholder="Or enter a city name manually">
         <button id="search-btn">Get Weather</button>
 
         <div id="weather-output"></div>
