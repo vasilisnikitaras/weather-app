@@ -1,18 +1,16 @@
 const apiKey = "1f1742f46396f018ec07cab6f270841a"; 
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
 
-// List of popular cities
-const popularCities = ["New York", "Los Angeles", "Toronto", "London", "Paris", "Tokyo", "Berlin", "Sydney", "Montreal", "Dubai"];
+// Expanded global city list 🌍
+const popularCities = [
+    "New York", "Los Angeles", "Toronto", "London", "Paris", "Tokyo", "Berlin", "Sydney", "Montreal", "Dubai",
+    "Rio de Janeiro", "Buenos Aires", "Cape Town", "Mumbai", "Bangkok", "Moscow", "Cairo", "Seoul", "Madrid", "Rome"
+];
 
-// Function to populate city dropdown
+// Populate dropdown menu with worldwide cities
 function populateCityDropdown() {
     let dropdown = document.getElementById("city-dropdown");
-
-    // Ensure dropdown exists before modifying it
-    if (!dropdown) {
-        console.error("Dropdown element not found!");
-        return;
-    }
+    if (!dropdown) return;
 
     dropdown.innerHTML = `<option value="" disabled selected>Select a city</option>`; // Default option
 
@@ -25,15 +23,14 @@ function populateCityDropdown() {
 
     dropdown.addEventListener("change", function() {
         document.getElementById("city-input").value = dropdown.value;
-        fetchWeather(); // Auto-fetch when city is selected
+        fetchWeather();
     });
 }
 
-// Function to fetch weather data
+// Fetch weather data from API
 async function fetchWeather() {
     let city = document.getElementById("city-input").value.trim();
-
-    if (city === "") {
+    if (!city) {
         displayMessage("⚠️ Please enter a city name.");
         return;
     }
@@ -53,43 +50,28 @@ async function fetchWeather() {
     }
 }
 
-// Function to display messages
-function displayMessage(msg) {
-    document.getElementById("weather-output").innerHTML = `<p>${msg}</p>`;
-}
-
-// Function to display weather data with animation
+// Show weather data with animations
 function displayWeather(data) {
     document.getElementById("weather-output").innerHTML = `
-        <div class="weather-card">
+        <div class="weather-card visible">
             <h2>🌍 ${data.name}, ${data.sys.country}</h2>
             <p>🌡️ Temperature: ${data.main.temp}°C</p>
             <p>🌤️ Condition: ${data.weather[0].description}</p>
             <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon" class="weather-icon">
         </div>
     `;
-    animateWeatherCard();
 }
 
-// Function to animate the weather card
-function animateWeatherCard() {
-    const card = document.querySelector(".weather-card");
-    card.style.opacity = 0;
-    setTimeout(() => {
-        card.style.opacity = 1;
-        card.style.transform = "scale(1.05)";
-        setTimeout(() => card.style.transform = "scale(1)", 500);
-    }, 300);
+// Auto-refresh weather data every 5 minutes
+function autoUpdateWeather() {
+    setInterval(fetchWeather, 300000); // 300,000ms = 5 minutes
 }
 
+// Load functions on page start
 document.addEventListener("DOMContentLoaded", () => {
     populateCityDropdown();
+    autoUpdateWeather();
 });
 
-// Ensure the button event listener is properly placed
-document.getElementById("search-btn").addEventListener("click", fetchWeather);
-
-
-// Ensure the function runs when the page loads
-document.addEventListener("DOMContentLoaded", populateCityDropdown);
+// Button click event
 document.getElementById("search-btn").addEventListener("click", fetchWeather);
