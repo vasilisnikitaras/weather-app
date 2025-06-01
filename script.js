@@ -1,4 +1,4 @@
-const apiKey = "YOUR_API_KEY"; // Replace with your actual OpenWeather API key
+const apiKey = "1f1742f46396f018ec07cab6f270841a"; 
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
 
 // List of popular cities
@@ -43,38 +43,4 @@ function displayWeather(data) {
             <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon" class="weather-icon">
         </div>
     `;
-    animateWeatherCard();
-}
-
-// Function to animate the weather card
-function animateWeatherCard() {
-    const card = document.querySelector(".weather-card");
-    card.style.opacity = 0;
-    setTimeout(() => {
-        card.style.opacity = 1;
-        card.style.transform = "scale(1.05)";
-        setTimeout(() => card.style.transform = "scale(1)", 500);
-    }, 300);
-}
-
-// Function to populate city dropdown
-function populateCityDropdown() {
-    let dropdown = document.getElementById("city-dropdown");
-    dropdown.innerHTML = `<option value="">Select a city...</option>`; // Default option
-
-    popularCities.forEach(city => {
-        let option = document.createElement("option");
-        option.value = city;
-        option.textContent = city;
-        dropdown.appendChild(option);
-    });
-
-    dropdown.addEventListener("change", function() {
-        document.getElementById("city-input").value = dropdown.value;
-        fetchWeather(); // Auto-fetch when city is selected
-    });
-}
-
-// Event Listeners
-document.getElementById("search-btn").addEventListener("click", fetchWeather);
-document.addEventListener("DOMContentLoaded", populateCityDropdown);
+    animate
