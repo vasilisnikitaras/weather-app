@@ -1,4 +1,4 @@
-const apiKey = "1f1742f46396f018ec07cab6f270841a"; 
+const apiKey = "1f1742f46396f018ec07cab6f270841a";  
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
 
 // List of popular cities
