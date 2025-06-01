@@ -110,3 +110,34 @@ body.dark-mode {
 #dark-mode-toggle:hover {
     background: #555; /* Slightly lighter hover effect */
 }
+/* Softer Dark Mode */
+body.dark-mode {
+    background: #2a2a2a; /* Medium-dark gray */
+    color: #f5f5f5; /* Softer white text */
+}
+
+.container.dark-mode {
+    background: rgba(50, 50, 50, 0.9); /* Slightly lighter dark */
+    color: #f5f5f5;
+    box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.1); /* Subtle glow */
+}
+
+/* Weather Card in Dark Mode */
+.weather-card.dark-mode {
+    background: rgba(60, 60, 60, 0.85); /* Softer dark transparency */
+    backdrop-filter: blur(6px);
+}
+
+/* Dark Mode Button */
+#dark-mode-toggle {
+    background: #555; /* Medium gray */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#dark-mode-toggle:hover {
+    background: #666; /* Slightly lighter hover effect */
+}
