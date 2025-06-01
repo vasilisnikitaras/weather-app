@@ -1,6 +1,6 @@
-/* Overall page styling */
+/* General Page Styling */
 body {
-    background-color: #e0f7fa; /* Light blue background */
+    background: linear-gradient(to bottom, #e0f7fa, #0288d1);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,27 +9,27 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Center everything in a container */
+/* Centered Container */
 .container {
     text-align: center;
     background: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Style for dropdown */
+/* Dropdown */
 #city-dropdown {
     width: 80%;
     padding: 12px;
     font-size: 16px;
     border: 2px solid #0288d1;
     border-radius: 8px;
-    background-color: #fff;
+    background-color: white;
     cursor: pointer;
 }
 
-/* Style for search input */
+/* Input Field */
 #city-input {
     width: 80%;
     padding: 12px;
@@ -39,9 +39,9 @@ body {
     margin-top: 10px;
 }
 
-/* Style for search button */
+/* Search Button */
 button {
-    background-color: #0288d1; /* Light blue button */
+    background-color: #0288d1;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -53,24 +53,26 @@ button {
 }
 
 button:hover {
-    background-color: #0277bd; /* Slightly darker blue on hover */
+    background-color: #0277bd;
 }
 
-/* Title and footer styling */
-h1 {
-    color: #01579b; /* Darker blue for the title */
-    font-size: 24px;
-}
-
-footer {
+/* Weather Output */
+.weather-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     margin-top: 20px;
-    font-size: 0.8em;
-    color: #555;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
 }
 
-/* Error message styling */
-.error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
+.weather-card.visible {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.weather-icon {
+    width: 100px;
+    height: 100px;
 }
