@@ -55,3 +55,27 @@ body.dark-mode {
     text-align: center;
     font-weight: bold;
 }
+/* Improve Background Visibility */
+.container {
+    background: rgba(255, 255, 255, 0.8); /* Make it semi-transparent */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px); /* Soft blur effect */
+}
+
+/* Weather Card Opacity */
+.weather-card {
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px); /* Light blur */
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Weather Card Animation */
+.weather-card.visible {
+    opacity: 1;
+    transform: scale(1.05);
+}
