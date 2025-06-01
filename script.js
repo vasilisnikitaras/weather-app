@@ -82,6 +82,14 @@ function animateWeatherCard() {
     }, 300);
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    populateCityDropdown();
+});
+
+// Ensure the button event listener is properly placed
+document.getElementById("search-btn").addEventListener("click", fetchWeather);
+
+
 // Ensure the function runs when the page loads
 document.addEventListener("DOMContentLoaded", populateCityDropdown);
 document.getElementById("search-btn").addEventListener("click", fetchWeather);
