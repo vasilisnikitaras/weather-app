@@ -1,62 +1,32 @@
-/* General Page Styling */
+/* Default Light Mode */
 body {
     background: linear-gradient(to bottom, #e0f7fa, #0288d1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    color: black;
     font-family: Arial, sans-serif;
 }
 
-/* Centered Container */
-.container {
-    text-align: center;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Dropdown */
-#city-dropdown {
-    width: 80%;
-    padding: 12px;
-    font-size: 16px;
-    border: 2px solid #0288d1;
-    border-radius: 8px;
-    background-color: white;
-    cursor: pointer;
-}
-
-/* Input Field */
-#city-input {
-    width: 80%;
-    padding: 12px;
-    font-size: 16px;
-    border: 2px solid #0288d1;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
-/* Search Button */
-button {
-    background-color: #0288d1;
+/* Dark Mode Styling */
+body.dark-mode {
+    background: #121212;
     color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
+}
+
+.container.dark-mode {
+    background: #1e1e1e;
+    color: white;
+}
+
+/* Toggle Dark Mode Button */
+#dark-mode-toggle {
+    background: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
     margin-top: 10px;
-    transition: background 0.3s ease;
 }
 
-button:hover {
-    background-color: #0277bd;
-}
-
-/* Weather Output */
+/* Weather Card Animations */
 .weather-card {
     background: rgba(255, 255, 255, 0.9);
     padding: 20px;
