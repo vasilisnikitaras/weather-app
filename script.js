@@ -1,4 +1,3 @@
-// Weather Forecast App - Improved functionality
 const apiKey = "YOUR_API_KEY"; // Replace with your actual OpenWeather API key
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
 
@@ -10,7 +9,7 @@ async function fetchWeather() {
     let city = document.getElementById("city-input").value.trim();
 
     if (city === "") {
-        document.getElementById("weather-output").innerHTML = "<p>Please enter a city name.</p>";
+        displayMessage("⚠️ Please enter a city name.");
         return;
     }
 
@@ -21,27 +20,48 @@ async function fetchWeather() {
         if (data.cod === 200) {
             displayWeather(data);
         } else {
-            document.getElementById("weather-output").innerHTML = `<p>City not found! Try again.</p>`;
+            displayMessage("❌ City not found! Try again.");
         }
     } catch (error) {
         console.error("Error fetching weather data:", error);
-        document.getElementById("weather-output").innerHTML = `<p>Failed to retrieve data. Please check your internet connection.</p>`;
+        displayMessage("⚠️ Failed to retrieve data. Check your internet connection.");
     }
 }
 
-// Function to display weather data
+// Function to display messages
+function displayMessage(msg) {
+    document.getElementById("weather-output").innerHTML = `<p>${msg}</p>`;
+}
+
+// Function to display weather data with animation
 function displayWeather(data) {
     document.getElementById("weather-output").innerHTML = `
-        <h2>Weather in ${data.name}, ${data.sys.country}</h2>
-        <p>Temperature: ${data.main.temp}°C</p>
-        <p>Description: ${data.weather[0].description}</p>
-        <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon">
+        <div class="weather-card">
+            <h2>🌍 ${data.name}, ${data.sys.country}</h2>
+            <p>🌡️ Temperature: ${data.main.temp}°C</p>
+            <p>🌤️ Condition: ${data.weather[0].description}</p>
+            <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon" class="weather-icon">
+        </div>
     `;
+    animateWeatherCard();
+}
+
+// Function to animate the weather card
+function animateWeatherCard() {
+    const card = document.querySelector(".weather-card");
+    card.style.opacity = 0;
+    setTimeout(() => {
+        card.style.opacity = 1;
+        card.style.transform = "scale(1.05)";
+        setTimeout(() => card.style.transform = "scale(1)", 500);
+    }, 300);
 }
 
 // Function to populate city dropdown
 function populateCityDropdown() {
     let dropdown = document.getElementById("city-dropdown");
+    dropdown.innerHTML = `<option value="">Select a city...</option>`; // Default option
+
     popularCities.forEach(city => {
         let option = document.createElement("option");
         option.value = city;
@@ -51,6 +71,7 @@ function populateCityDropdown() {
 
     dropdown.addEventListener("change", function() {
         document.getElementById("city-input").value = dropdown.value;
+        fetchWeather(); // Auto-fetch when city is selected
     });
 }
 
